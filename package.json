@@ -1,7 +1,8 @@
 {
   "name": "get_started",
   "scripts": {
-    "flow": "flow; test $? -eq 0 -o $? -eq 2"
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "dev": "webpack --mode development"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

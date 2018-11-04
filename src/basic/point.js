@@ -16,3 +16,5 @@ class Point {
     this.y = newVal;
   }
 }
+
+export default Point;

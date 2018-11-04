@@ -11,7 +11,7 @@
     lineColor: string,
   }  
 */
-function line(ctx, opts) {
+export function line(ctx, opts) {
   const { startPos,  endPos, lineWidth=1, lineColor="#000" } = opts;
   
   // move to begin
@@ -37,7 +37,7 @@ function line(ctx, opts) {
     fillColor: string
   }  
 */
-function rect(ctx, opts) {
+export function rect(ctx, opts) {
   const { startPos,  endPos, lineWidth=1, isFill=false, lineColor="#000", fillColor="#fff" } = opts;
 
   ctx.lineWidth = lineWidth;
@@ -53,6 +53,7 @@ function rect(ctx, opts) {
   } else {
     ctx.strokeStyle = lineColor;
     ctx.strokeRect(startPos.x, startPos.y, width, height);
+    console.log(startPos, lineWidth, lineColor);
   }
 }
 
@@ -70,7 +71,7 @@ function rect(ctx, opts) {
   }  
 */
 
-function circle(ctx, opts) {
+export function circle(ctx, opts) {
   const { center,  radius, startAngle=0, endAngle=2*Math.PI, anticlockwise=true, lineWidth=1, isFill=false, lineColor="#000", fillColor="#fff" } = opts;
 
   ctx.lineWidth = lineWidth;
