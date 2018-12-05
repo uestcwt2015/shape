@@ -2,14 +2,15 @@
  * @file index.js
  */
 
-import * as draw from "./basic/shape";
-import Point from "./basic/point";
-
-const canvas = document.getElementById("canvas");
-console.log(canvas);
+// import * as draw from "./basic/shape";
+// import Point from "./basic/point";
+const fabric = require("fabric");
+var fc = null;
 
 function init(el) {
-  addEventToCanvas(el, "rect");
+  fc = new fabric.Canvas('canvas');
+  console.log(fc);
+  // addEventToCanvas(el, "rect");
 }
 
 function addEventToCanvas(el, type) {

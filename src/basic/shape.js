@@ -2,7 +2,6 @@
  * @file shape.js
 */
 
-
 /* 
   options: {
     startPos: Point,
@@ -38,23 +37,16 @@ export function line(ctx, opts) {
   }  
 */
 export function rect(ctx, opts) {
-  const { startPos,  endPos, lineWidth=1, isFill=false, lineColor="#000", fillColor="#fff" } = opts;
+  const { startPos, endPos } = opts;
 
-  ctx.lineWidth = lineWidth;
-  
-  // calculate width and height
-  let width = endPos.x - startPos.x;
-  let height = endPos.y - startPos.y;
+  let rect = new fabric.Rect({
+    left: startPos.x,
+    top: startPos.y,
+    width: endPos.x - startPos.x,
+    height: endPos.y - startPos.y
+  });
 
-  // draw rect
-  if (isFill) {
-    ctx.fillStyle = fillColor;
-    ctx.fillRect(startPos.x, startPos.y, width, height);
-  } else {
-    ctx.strokeStyle = lineColor;
-    ctx.strokeRect(startPos.x, startPos.y, width, height);
-    console.log(startPos, lineWidth, lineColor);
-  }
+  return rect;
 }
 
 /* 
@@ -72,19 +64,11 @@ export function rect(ctx, opts) {
 */
 
 export function circle(ctx, opts) {
-  const { center,  radius, startAngle=0, endAngle=2*Math.PI, anticlockwise=true, lineWidth=1, isFill=false, lineColor="#000", fillColor="#fff" } = opts;
+  const { center,  radius } = opts;
 
-  ctx.lineWidth = lineWidth;
-
-  // draw circle
-  ctx.arc(center.x, center.y, radius, startAngle, endAngle, anticlockwise);
-
-  // fill or stroke
-  if (isFill) {
-    ctx.fillStyle = fillColor;
-    ctx.fill();
-  } else {
-    ctx.strokeStyle = lineColor;
-    ctx.stroke();
-  }
+  let circle = new fabric.Circle({
+    left: center.x,
+    top: center.y,
+    radius: radius
+  })
 }
