@@ -1,5 +1,7 @@
-import type from "./type";
+import * as type from "./type";
+import * as postions from  "./postions";
 
 export default {
-  type
+  ...type,
+  ...positions
 }

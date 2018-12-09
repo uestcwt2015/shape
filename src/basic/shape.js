@@ -10,21 +10,21 @@
     lineColor: string,
   }  
 */
-export function line(ctx, opts) {
-  const { startPos,  endPos, lineWidth=1, lineColor="#000" } = opts;
+// export function line(ctx, opts) {
+//   const { startPos,  endPos, lineWidth=1, lineColor="#000" } = opts;
   
-  // move to begin
-  ctx.beginPath();
-  ctx.moveTo(startPos.x, startPos.y);
+//   // move to begin
+//   ctx.beginPath();
+//   ctx.moveTo(startPos.x, startPos.y);
 
-  // draw line
-  ctx.lineWidth = lineWidth;
-  ctx.strokeStyle = lineColor;
-  ctx.lineTo(endPos.x, endPos.y);
-  ctx.stroke();
+//   // draw line
+//   ctx.lineWidth = lineWidth;
+//   ctx.strokeStyle = lineColor;
+//   ctx.lineTo(endPos.x, endPos.y);
+//   ctx.stroke();
 
-  ctx.endPath();
-};
+//   ctx.endPath();
+// };
 
 /* 
   options: {
@@ -36,7 +36,7 @@ export function line(ctx, opts) {
     fillColor: string
   }  
 */
-export function rect(ctx, opts) {
+export function rect(opts) {
   const { startPos, endPos } = opts;
 
   let rect = new fabric.Rect({

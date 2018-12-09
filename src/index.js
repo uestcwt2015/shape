@@ -2,48 +2,28 @@
  * @file index.js
  */
 
-// import * as draw from "./basic/shape";
-// import Point from "./basic/point";
-const fabric = require("fabric");
-var fc = null;
+import * as initHandles from "./basic/init";
+import * as globalApis from "./basic/globalApi";
 
-function init(el) {
-  fc = new fabric.Canvas('canvas');
-  console.log(fc);
-  // addEventToCanvas(el, "rect");
+const Shape = function() {
+  this.fc = null;
+  this.target = null;
+  this.grid = false;
+  this.canvasArr = [];
+  this.isDrawing = false;
+  this.currentEvent = {};
 }
 
-function addEventToCanvas(el, type) {
-  let startPoint = null;
-  let endPoint = null;
-
-  const ctx = el.getContext("2d");
-
-  el.addEventListener("mousedown", e => {
-    startPoint = new Point(e.x, e.y);
-  });
-
-  el.addEventListener("mousemove", e => {
-    if (!startPoint) return;
-    draw[type](ctx, {
-      startPos: startPoint, 
-      endPos: {
-        x: e.x,
-        y: e.y
-      }
-    });
-  });
-
-  el.addEventListener("mouseup", e => {
-    endPoint = new Point(e.x, e.y);
-    console.log(startPoint, endPoint);
-    draw[type](ctx, {
-      startPos: startPoint, 
-      endPos: endPoint
-    });
-    startPoint = null;
-    endPoint = null;
-  });
+for (let method in initHandles) {
+  Shape.prototype[method] = initHandles[method];
 }
 
-init(canvas);
+for (let api in globalApis) {
+  Shape.prototype[api] = globalApis[api];
+}
+
+var instance = new Shape();
+
+window.Shape = instance;
+
+instance.initCanvas(document.getElementById("canvas"));
