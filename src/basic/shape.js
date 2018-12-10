@@ -36,14 +36,17 @@
     fillColor: string
   }  
 */
-export function rect(opts) {
-  const { startPos, endPos } = opts;
+export function Rect() {
+  const { from, to } = this.currentEvent;
 
   let rect = new fabric.Rect({
-    left: startPos.x,
-    top: startPos.y,
-    width: endPos.x - startPos.x,
-    height: endPos.y - startPos.y
+    left: from.x,
+    top: from.y,
+    width: to.x - from.x,
+    height: to.y - from.y,
+    stroke: this.color,
+    strokeWidth: this.lineWidth,
+    fill: this.bgColor
   });
 
   return rect;
@@ -63,7 +66,7 @@ export function rect(opts) {
   }  
 */
 
-export function circle(ctx, opts) {
+export function Circle(ctx, opts) {
   const { center,  radius } = opts;
 
   let circle = new fabric.Circle({
